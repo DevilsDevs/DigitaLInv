@@ -2121,4 +2121,151 @@ body { font-size: 17.5px; }
   }
 }
 
+/* ======================================================
+   SIDEBAR FIX — VELLUM 2026 — elegante + responsive
+   Unifica panel-navegacion en todas las plantillas
+====================================================== */
+.panel-navegacion {
+  position: fixed;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid #b46b7812;
+  border-radius: 999px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.08);
+  z-index: 100;
+  padding: 6px;
+  transition: all 0.3s ease;
+}
+.panel-navegacion ul {
+  list-style: none;
+  padding: 6px 4px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+.panel-navegacion li {
+  width: 46px;
+  height: 46px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  transition: all 0.22s ease;
+  position: relative;
+}
+.panel-navegacion li a {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 50%;
+}
+.panel-navegacion li img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  transition: all 0.22s ease;
+  opacity: 0.85;
+}
+/* Hover: suave, con leve escala */
+.panel-navegacion li:hover {
+  background: rgba(180, 107, 120,0.11);
+  transform: scale(1.06);
+}
+.panel-navegacion li:hover img {
+  opacity: 1;
+  transform: scale(1.08);
+}
+/* Activo — relleno sólido tema + icono invertido */
+.panel-navegacion .activo {
+  background: #b46b78 !important;
+  box-shadow: 0 4px 16px rgba(180, 107, 120,0.32);
+}
+.panel-navegacion .activo img {
+  filter: brightness(0) invert(1);
+  opacity: 1;
+}
+.panel-navegacion .activo:hover {
+  background: #7a4a52 !important;
+}
+/* Tooltip label al hover (usa aria-label) */
+.panel-navegacion li::after {
+  content: attr(aria-label);
+  position: absolute;
+  right: 54px;
+  top: 50%;
+  transform: translateY(-50%) translateX(6px);
+  background: #1a1a1a;
+  color: white;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: 8px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.2s ease;
+}
+.panel-navegacion li:hover::after {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+/* Asegura que tooltip provenga del <li aria-label> — lo seteamos via JS si falta */
+@media (max-width: 768px) {
+  .panel-navegacion {
+    right: auto;
+    left: 50%;
+    top: auto;
+    bottom: 18px;
+    transform: translateX(-50%);
+    border-radius: 999px;
+    padding: 6px 8px;
+  }
+  .panel-navegacion ul {
+    flex-direction: row;
+    gap: 4px;
+    padding: 4px 6px;
+  }
+  .panel-navegacion li {
+    width: 44px;
+    height: 44px;
+  }
+  .panel-navegacion li::after {
+    display: none;
+  }
+}
+@media (max-width: 480px) {
+  .panel-navegacion {
+    bottom: 14px;
+    padding: 5px 6px;
+  }
+  .panel-navegacion li {
+    width: 40px;
+    height: 40px;
+  }
+  .panel-navegacion li img {
+    width: 20px;
+    height: 20px;
+  }
+}
+/* Fix para 5 items — asegura que no se desborde en altura */
+@media (min-width: 769px) and (max-height: 700px) {
+  .panel-navegacion li {
+    width: 42px;
+    height: 42px;
+  }
+  .panel-navegacion ul {
+    gap: 4px;
+  }
+}
 
