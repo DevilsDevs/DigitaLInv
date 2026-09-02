@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Boda de Sofía & Mateo — Plantilla Romántica</title>
-    <meta name="description" content="Romance suave en rosa y mauve — delicado y moderno. — Sofía & Mateo, 07 de Noviembre. Plantilla demo genérica de Vellum Digital.">
+    <meta name="description" content="Romance suave en rosa y mauve — delicado y moderno. — Sofía & Mateo, 07 de Noviembre. Plantilla demo interactiva de Vellum Digital.">
     <meta name="author" content="Sofía & Mateo">
     <link rel="canonical" href="./" />
     <meta property="og:type" content="website">
@@ -35,7 +35,7 @@
             <span>&</span>
             <span>Mateo</span>
         </div>
-        <p class="hero-subtitle" style="font-family:'DM Sans',sans-serif; color:white; text-shadow:0 2px 10px rgba(0,0,0,0.4); margin-top:8px; letter-spacing:2px; font-size:0.95rem;">07 DE NOVIEMBRE · EJEMPLO GENÉRICO</p>
+        <p class="hero-subtitle" style="font-family:'DM Sans',sans-serif; color:white; text-shadow:0 2px 10px rgba(0,0,0,0.4); margin-top:8px; letter-spacing:2px; font-size:0.95rem;">07 DE NOVIEMBRE · DEMO</p>
     </div>
 </section>
 
@@ -121,17 +121,46 @@
 
     <section id="galeria" class="collage">
         <h2 class="mainText">Nosotros</h2>
-        <p style="text-align:center; color:var(--color-muted); font-family:'DM Sans',sans-serif; font-size:0.9rem; margin-bottom:16px;">Fotos stock genéricas — reemplaza con tus fotos reales</p>
+        <p style="text-align:center; color:var(--color-muted); font-family:'DM Sans',sans-serif; font-size:0.9rem; margin-bottom:16px;">Fotos de ejemplo — reemplaza con tus fotos reales</p>
         <div class="container-img">
             <div class="box-img"><img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=800&q=80&auto=format&fit=crop" alt="Galería Sofía & Mateo — foto 1" loading="lazy" decoding="async"></div>
             <div class="box-img"><img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800&q=80&auto=format&fit=crop" alt="Galería Sofía & Mateo — foto 2" loading="lazy" decoding="async"></div>
             <div class="box-img"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80&auto=format&fit=crop" alt="Galería Sofía & Mateo — foto 3" loading="lazy" decoding="async"></div>
-            <div class="box-img"><img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=800&q=80&auto=format&fit=crop" alt="Galería Sofía & Mateo — foto 4" loading="lazy" decoding="async"></div>
+            <div class="box-img"><img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&q=80&auto=format&fit=crop" alt="Galería Sofía & Mateo — foto 4" loading="lazy" decoding="async"></div>
             <div class="box-img"><img src="https://images.unsplash.com/photo-1520854221256-589c14166900?w=800&q=80&auto=format&fit=crop" alt="Galería Sofía & Mateo — foto 5" loading="lazy" decoding="async"></div>
             <div class="box-img"><img src="https://images.unsplash.com/photo-1474552226712-ac0f0961a954?w=800&q=80&auto=format&fit=crop" alt="Galería Sofía & Mateo — foto 6" loading="lazy" decoding="async"></div>
             <div class="box-img"><img src="https://images.unsplash.com/photo-1529634597503-139d3726fed5?w=800&q=80&auto=format&fit=crop" alt="Galería Sofía & Mateo — foto 7" loading="lazy" decoding="async"></div>
         </div>
+    
+    <!-- QR DEMO INTERACTIVO — ejemplo, no backend real -->
+    <section id="qr-demo" class="qr-demo-section">
+        <div class="qr-demo-container">
+            <div class="qr-demo-header">
+                <p class="qr-kicker">Acceso Demo · Interactiva</p>
+                <h2 class="mainText">Tu Pase</h2>
+                <p class="qr-subtitle">Presenta este QR en la entrada. Toca para ampliar. Botones demo abajo.</p>
+            </div>
+            <div class="qr-card">
+                <div class="qr-frame" id="qr-frame" role="button" tabindex="0" aria-label="QR ampliable — toca para agrandar">
+                    <div id="qrcode-demo"></div>
+                    <div class="qr-badge">DEMO</div>
+                </div>
+                <div class="qr-info">
+                    <p class="qr-guest">Familia Ortiz</p>
+                    <p class="qr-novios">Sofía & Mateo</p>
+                    <p class="qr-meta"><span id="qr-personas">2 personas</span> · Mesa <span id="qr-mesa">12</span> · <span id="qr-estado" class="qr-estado pendiente">Pendiente</span></p>
+                    <div class="qr-actions">
+                        <button class="qr-btn qr-btn-confirm" id="btn-confirm" aria-label="Confirmar asistencia demo">✓ Confirmar</button>
+                        <button class="qr-btn qr-btn-decline" id="btn-decline" aria-label="No podré asistir demo">✕ No podré</button>
+                    </div>
+                    <p class="qr-hint">Demo interactiva — sin backend. Prueba los botones.</p>
+                </div>
+            </div>
+            <p class="qr-foot">QR de ejemplo generado con <code>qrcodejs</code> · Texto: <code>DEMO-VELLUM-ROMANTICA-SOFIA-MATEO-M12-2P-2026</code></p>
+        </div>
     </section>
+
+</section>
 
     <section id="fotos" class="fotos-section">
         <div class="fotos-container">
@@ -189,11 +218,21 @@
 <nav class="panel-navegacion" aria-label="Navegación de secciones">
     <ul>
         <li><a href="#itinerario" aria-label="Itinerario"><img src="./img/itinerario.png" alt="Itinerario"></a></li>
+        <li><a href="#qr-demo" aria-label="Tu Pase QR"><img src="./img/marco_qr.png" alt="QR"></a></li>
         <li><a href="#galeria" aria-label="Galería"><img src="./img/galeria.png" alt="Galería"></a></li>
         <li><a href="#fotos" aria-label="Fotos"><img src="./img/entrada.png" alt="Fotos"></a></li>
         <li><a href="#regalos" aria-label="Regalos"><img src="./img/regalo_crono.png" alt="Regalos"></a></li>
     </ul>
 </nav>
+
+
+    <div class="qr-lightbox" id="qr-lightbox" role="dialog" aria-modal="true" aria-label="QR ampliado">
+        <button class="qr-lightbox-close" id="qr-lightbox-close" aria-label="Cerrar">&times;</button>
+        <div class="qr-lightbox-content">
+            <div id="qrcode-large"></div>
+            <p style="color:white; margin-top:16px; font-family:DM Sans,sans-serif; font-size:0.9rem;">Escanea este QR — demo</p>
+        </div>
+    </div>
 
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Galería ampliada">
     <button class="lightbox-close" id="lightbox-close" aria-label="Cerrar">&times;</button>
@@ -203,8 +242,11 @@
 </div>
 
 <p style="text-align:center; padding:30px 20px; color:var(--color-muted); font-family:'DM Sans',sans-serif; font-size:0.85rem;">
-    Plantilla <strong>boda-romantica</strong> · <a href="../../index.html" style="color:var(--color-primary);">← Volver al landing</a> · Demo genérica
+    Plantilla <strong>boda-romantica</strong> · <a href="../../index.html" style="color:var(--color-primary);">← Volver al landing</a> · Demo interactiva
 </p>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>window.QR_DEMO_CONFIG = { text: "DEMO-VELLUM-ROMANTICA-SOFIA-MATEO-M12-2P-2026", guest: "Familia Ortiz", personas: 2, mesa: 12 };</script>
 
 <script src="./js/script.js"></script>
 </body>

@@ -9,7 +9,7 @@ Principal/
 ├── index.html          ← homepage (hero, eventos, planes, galería, contacto)
 ├── styles.css          ← estilos landing
 ├── script.js           ← carousel, countdown oferta, forms, observer
-├── 404.html            ← 404 genérico (sin datos reales)
+├── 404.html            ← 404 de ejemplo (sin datos reales)
 ├── Plantillas/
 │   ├── boda-clasica/   ← Laura & Daniel — verde salvia (stock Unsplash)
 │   ├── boda-dorada/    ← Ana & Luis — dorado/crema

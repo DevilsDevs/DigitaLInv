@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Plantilla boda-dorada — Ana & Luis — genérica, sin backend
+    // Plantilla boda-dorada — Ana & Luis — demo, sin backend
     // Countdown objetivo: 2026-10-18T19:00:00 (ficticio)
 
     /* 1. IntersectionObserver reveal */
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         }
         function getSectionInView() {
-            return ["galeria", "itinerario", "fotos", "regalos"]
+            return ["galeria", "itinerario", "qr-demo", "fotos", "regalos"]
                 .map(id => ({ id, el: document.getElementById(id) }))
                 .filter(s => s.el)
                 .reduce((best, sec) => {
@@ -122,9 +122,122 @@ document.addEventListener("DOMContentLoaded", () => {
         if (e.key === 'ArrowRight') showNextImage();
     });
 
-    /* 6. Modal regalos (genérico, sin CLABE real) */
+    /* 6. Modal regalos (demo, sin CLABE real) */
     const modal = document.getElementById('cuenta-modal');
     if (modal) {
         modal.addEventListener('click', (e) => { if (e.target === modal) modal.style.display='none'; });
     }
+
+    /* 7. QR DEMO interactivo — ejemplo con qrcodejs, sin backend */
+    const qrDemo = document.getElementById('qrcode-demo');
+    const qrLarge = document.getElementById('qrcode-large');
+    const qrFrame = document.getElementById('qr-frame');
+    const qrLightbox = document.getElementById('qr-lightbox');
+    const qrLightboxClose = document.getElementById('qr-lightbox-close');
+    const btnConfirm = document.getElementById('btn-confirm');
+    const btnDecline = document.getElementById('btn-decline');
+    const qrEstado = document.getElementById('qr-estado');
+    const cfg = window.QR_DEMO_CONFIG || { text: 'DEMO-VELLUM', guest: 'Demo', personas: 2, mesa: 5 };
+
+    if (qrDemo && window.QRCode) {
+        // QR pequeño 200x200
+        new QRCode(qrDemo, {
+            text: cfg.text,
+            width: 200,
+            height: 200,
+            colorDark: "#1a1a1a",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.M
+        });
+        // QR grande para lightbox 280x280
+        if (qrLarge) {
+            new QRCode(qrLarge, {
+                text: cfg.text,
+                width: 280,
+                height: 280,
+                colorDark: "#1a1a1a",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.M
+            });
+        }
+        // Interacción: click en frame abre lightbox
+        function openQrLightbox() {
+            qrLightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeQrLightbox() {
+            qrLightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        if (qrFrame) {
+            qrFrame.addEventListener('click', openQrLightbox);
+            qrFrame.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openQrLightbox(); }});
+        }
+        if (qrLightbox) {
+            qrLightbox.addEventListener('click', (e) => { if (e.target === qrLightbox) closeQrLightbox(); });
+        }
+        if (qrLightboxClose) qrLightboxClose.addEventListener('click', closeQrLightbox);
+        document.addEventListener('keydown', (e) => {
+            if (qrLightbox && qrLightbox.classList.contains('active') && e.key === 'Escape') closeQrLightbox();
+        });
+
+        // Botones RSVP demo — actualizan estado localmente
+        function setEstado(tipo) {
+            if (!qrEstado) return;
+            qrEstado.classList.remove('pendiente','confirmado','declinado');
+            if (tipo === 'confirmado') {
+                qrEstado.textContent = 'Confirmado ✓';
+                qrEstado.classList.add('confirmado');
+                // feedback visual
+                btnConfirm.textContent = '¡Confirmado!';
+                btnConfirm.disabled = true;
+                btnDecline.disabled = false;
+                btnDecline.textContent = '✕ No podré';
+            } else if (tipo === 'declinado') {
+                qrEstado.textContent = 'No asistirá';
+                qrEstado.classList.add('declinado');
+                btnDecline.textContent = 'Registrado';
+                btnDecline.disabled = true;
+                btnConfirm.disabled = false;
+                btnConfirm.textContent = '✓ Confirmar';
+            }
+            // pequeña animación
+            qrEstado.animate([{ transform: 'scale(0.9)' }, { transform: 'scale(1)' }], { duration: 200 });
+        }
+        if (btnConfirm) btnConfirm.addEventListener('click', () => setEstado('confirmado'));
+        if (btnDecline) btnDecline.addEventListener('click', () => {
+            if (confirm('¿Confirmas que no podrás asistir? (demo)')) setEstado('declinado');
+        });
+    }
+
+    /* 8. Paleta interactiva — click copia hex y feedback */
+    document.querySelectorAll('.color-circle').forEach(circle => {
+        circle.style.cursor = 'pointer';
+        circle.title = 'Click para copiar color';
+        circle.addEventListener('click', () => {
+            const bg = circle.style.backgroundColor;
+            // Convertir rgb a hex si es necesario — fallback usa computed style hex via estilo inline
+            let hex = circle.getAttribute('style').match(/#[0-9a-fA-F]{6}/);
+            hex = hex ? hex[0] : bg;
+            if (navigator.clipboard) navigator.clipboard.writeText(hex).catch(()=>{});
+            // feedback visual
+            circle.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.25)' }, { transform: 'scale(1)' }], { duration: 280 });
+            const tip = document.createElement('span');
+            tip.textContent = hex + ' copiado';
+            tip.style.cssText = 'position:absolute; background:#1a1a1a; color:white; font-size:0.7rem; padding:4px 8px; border-radius:6px; transform:translate(-50%, -36px); white-space:nowrap; pointer-events:none;';
+            circle.style.position = 'relative';
+            circle.appendChild(tip);
+            setTimeout(()=> tip.remove(), 1200);
+        });
+    });
+
+    /* 9. Details box interacción — click expande */
+    document.querySelectorAll('.details .box').forEach(box => {
+        box.style.cursor = 'pointer';
+        box.addEventListener('click', (e) => {
+            if (e.target.closest('button') || e.target.closest('a')) return;
+            box.classList.toggle('box-expanded');
+        });
+    });
+
 });
