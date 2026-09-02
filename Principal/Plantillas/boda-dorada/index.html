@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Boda de Ana & Luis — Plantilla Dorada</title>
-    <meta name="description" content="Calidez dorada y crema — ideal para haciendas. — Ana & Luis, 18 de Octubre. Plantilla demo interactiva de Vellum Digital.">
+    <meta name="description" content="Calidez dorada y crema — ideal para haciendas. — Ana & Luis, 18 de Octubre. Plantilla demo interactiva de DigitalInv.">
     <meta name="author" content="Ana & Luis">
     <link rel="canonical" href="./" />
     <meta property="og:type" content="website">
@@ -131,8 +131,25 @@
             <div class="box-img"><img src="https://images.unsplash.com/photo-1507504031001-f536d2d40771?w=800&q=80&auto=format&fit=crop" alt="Galería Ana & Luis — foto 6" loading="lazy" decoding="async"></div>
             <div class="box-img"><img src="https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=800&q=80&auto=format&fit=crop" alt="Galería Ana & Luis — foto 7" loading="lazy" decoding="async"></div>
         </div>
-    
-    <!-- QR DEMO INTERACTIVO — ejemplo, no backend real -->
+
+</section>
+
+    <section id="fotos" class="fotos-section">
+        <div class="fotos-container">
+            <div class="fotos-icon"><img src="./img/camera.png" alt="Cámara" loading="lazy"></div>
+            <h2 class="mainText">Álbum de la Boda</h2>
+            <div class="divider"></div>
+            <p class="fotos-mensaje">¡Captura y comparte los momentos especiales de este día! Cada foto tuya es un recuerdo que atesoraremos</p>
+            <div class="fotos-botones">
+                <a href="https://photos.google.com/" target="_blank" rel="noopener" class="fotos-btn fotos-btn-subir">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></svg>
+                    Subir mis fotos
+                </a>
+            </div>
+            <p class="fotos-nota">Demo — enlaza tu álbum compartido de Google Fotos</p>
+        </div>
+    </section>
+<!-- QR DEMO INTERACTIVO — ejemplo, no backend real -->
     <section id="qr-demo" class="qr-demo-section">
         <div class="qr-demo-container">
             <div class="qr-demo-header">
@@ -156,27 +173,10 @@
                     <p class="qr-hint">Demo interactiva — sin backend. Prueba los botones.</p>
                 </div>
             </div>
-            <p class="qr-foot">QR de ejemplo generado con <code>qrcodejs</code> · Texto: <code>DEMO-VELLUM-DORADA-ANA-LUIS-M8-3P-2026</code></p>
+            <p class="qr-foot">QR de ejemplo generado con <code>qrcodejs</code> · Texto: <code>DEMO-DIGITALINV-DORADA-ANA-LUIS-M8-3P-2026</code></p>
         </div>
     </section>
 
-</section>
-
-    <section id="fotos" class="fotos-section">
-        <div class="fotos-container">
-            <div class="fotos-icon"><img src="./img/camera.png" alt="Cámara" loading="lazy"></div>
-            <h2 class="mainText">Álbum de la Boda</h2>
-            <div class="divider"></div>
-            <p class="fotos-mensaje">¡Captura y comparte los momentos especiales de este día! Cada foto tuya es un recuerdo que atesoraremos</p>
-            <div class="fotos-botones">
-                <a href="https://photos.google.com/" target="_blank" rel="noopener" class="fotos-btn fotos-btn-subir">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></svg>
-                    Subir mis fotos
-                </a>
-            </div>
-            <p class="fotos-nota">Demo — enlaza tu álbum compartido de Google Fotos</p>
-        </div>
-    </section>
 
     <section id="regalos" class="regalos-section">
         <div class="regalos-container">
@@ -218,9 +218,9 @@
 <nav class="panel-navegacion" aria-label="Navegación de secciones">
     <ul>
         <li aria-label="Itinerario"><a href="#itinerario" aria-label="Itinerario"><img src="./img/itinerario.png" alt="Itinerario"></a></li>
-        <li aria-label="Tu Pase QR"><a href="#qr-demo" aria-label="Tu Pase QR"><img src="./img/marco_qr.png" alt="QR"></a></li>
         <li aria-label="Galería"><a href="#galeria" aria-label="Galería"><img src="./img/galeria.png" alt="Galería"></a></li>
         <li aria-label="Fotos"><a href="#fotos" aria-label="Fotos"><img src="./img/entrada.png" alt="Fotos"></a></li>
+        <li aria-label="Tu Pase QR"><a href="#qr-demo" aria-label="Tu Pase QR"><img src="./img/marco_qr.png" alt="QR"></a></li>
         <li aria-label="Regalos"><a href="#regalos" aria-label="Regalos"><img src="./img/regalo_crono.png" alt="Regalos"></a></li>
     </ul>
 </nav>
@@ -246,7 +246,7 @@
 </p>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-<script>window.QR_DEMO_CONFIG = { text: "DEMO-VELLUM-DORADA-ANA-LUIS-M8-3P-2026", guest: "Familia Rivera", personas: 3, mesa: 8 };</script>
+<script>window.QR_DEMO_CONFIG = { text: "DEMO-DIGITALINV-DORADA-ANA-LUIS-M8-3P-2026", guest: "Familia Rivera", personas: 3, mesa: 8 };</script>
 
 <script src="./js/script.js"></script>
 </body>

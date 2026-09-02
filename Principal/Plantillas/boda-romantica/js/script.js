@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         }
         function getSectionInView() {
-            return ["galeria", "itinerario", "qr-demo", "fotos", "regalos"]
+            return ["itinerario", "galeria", "fotos", "qr-demo", "regalos"]
                 .map(id => ({ id, el: document.getElementById(id) }))
                 .filter(s => s.el)
                 .reduce((best, sec) => {
@@ -137,7 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const btnConfirm = document.getElementById('btn-confirm');
     const btnDecline = document.getElementById('btn-decline');
     const qrEstado = document.getElementById('qr-estado');
-    const cfg = window.QR_DEMO_CONFIG || { text: 'DEMO-VELLUM', guest: 'Demo', personas: 2, mesa: 5 };
+    const cfg = window.QR_DEMO_CONFIG || { text: 'DEMO-DIGITALINV', guest: 'Demo', personas: 2, mesa: 5 };
 
     if (qrDemo && window.QRCode) {
         // QR pequeño 200x200

@@ -1,6 +1,6 @@
 # DigitaLInv — Landing Principal
 
-Landing showcase estático (HTML/CSS/JS sin build) que presenta los servicios de invitaciones digitales de **Vellum Digital**.
+Landing showcase estático (HTML/CSS/JS sin build) que presenta los servicios de invitaciones digitales de **DigitalInv**.
 
 ## Estructura
 
