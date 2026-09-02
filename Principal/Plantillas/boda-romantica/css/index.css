@@ -41,7 +41,7 @@ body { background-color: var(--color-bg) !important; }
 body {
   font-family: 'Cormorant Garamond', serif;
   font-size: 18px;
-  background-color: #f5f5f0;
+  background-color: #fdf2f4;
   background-image: url("../img/fondo.jpg");
   background-size: 400px 400px;
   background-repeat: repeat;
@@ -80,7 +80,7 @@ p {
 .mainText {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(2.5rem, 6vw, 5rem);
-  color: #486547;
+  color: #b46b78;
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
 }
 
@@ -147,7 +147,7 @@ p {
 .collage .mainText {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(2.5rem, 5vw, 4rem);
-  color: #486547;
+  color: #b46b78;
   margin-bottom: 50px;  
   text-align: center;
   letter-spacing: 2px;
@@ -201,7 +201,7 @@ p {
 
 .container-img .box-img:hover {
   transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(72, 101, 71, 0.4);
+  box-shadow: 0 20px 40px rgba(180, 107, 120, 0.4);
 }
 
 .container-img .box-img:hover::before {
@@ -372,7 +372,7 @@ p {
 }
 
 .panel-navegacion .activo {
-  background-color: #486547;
+  background-color: #b46b78;
 }
 
 .panel-navegacion .activo img {
@@ -380,11 +380,11 @@ p {
 }
 
 .panel-navegacion li:hover {
-  background-color: rgba(72, 101, 71, 0.2);
+  background-color: rgba(180, 107, 120, 0.2);
 }
 
 .panel-navegacion .activo:hover {
-  background-color: #3a5038;
+  background-color: #7a4a52;
 }
 
 /* =========================================
@@ -409,7 +409,7 @@ p {
   margin-bottom: 20px;
   text-align: center;
   letter-spacing: 2px;
-  color: #486547;
+  color: #b46b78;
   font-weight: 400;
 }
 
@@ -427,7 +427,7 @@ p {
   top: 50%;
   width: 40%;
   height: 1px;
-  background: linear-gradient(to right, transparent, #486547, transparent);
+  background: linear-gradient(to right, transparent, #b46b78, transparent);
 }
 
 .wedding-section .divider::before { left: 0; }
@@ -436,7 +436,7 @@ p {
 .wedding-section .divider-icon {
   display: inline-block;
   font-size: 2rem;
-  color: #486547;
+  color: #b46b78;
 }
 
 .wedding-section .details {
@@ -464,7 +464,7 @@ p {
 
 .wedding-section .details .box:hover {
   transform: translateY(-10px);
-  box-shadow: 0 15px 40px rgba(72, 101, 71, 0.3);
+  box-shadow: 0 15px 40px rgba(180, 107, 120, 0.3);
   
 }
 
@@ -478,7 +478,7 @@ p {
 .wedding-section .details .box h2, 
 .dress-title {
     font-family: 'Cormorant Garamond', serif !important;
-    color: #486547; /* Usamos el verde estándar del sitio */
+    color: #b46b78; /* Usamos el verde estándar del sitio */
     letter-spacing: 2px;
     font-size: 2rem;
     margin-bottom: 15px;
@@ -493,13 +493,13 @@ p {
 }
 
 .wedding-section .date-celebration > div:first-child {
-  border-right: 2px solid #486547;
+  border-right: 2px solid #b46b78;
 }
 
 .wedding-section .date-celebration p {
   font-size: 1.8rem;
   font-weight: 600;
-  color: #486547;
+  color: #b46b78;
 }
 
 .wedding-section .hour span {
@@ -511,10 +511,10 @@ p {
   max-width: 300px;
   font-size: 1rem;
   padding: 15px 30px;
-  border: 2px solid #486547;
+  border: 2px solid #b46b78;
   border-radius: 25px;
   background: white;
-  color: #486547;
+  color: #b46b78;
   cursor: pointer;
   transition: all 0.3s ease;
   font-weight: 600;
@@ -522,11 +522,11 @@ p {
 }
 
 .wedding-section .ubication:hover {
-  background: linear-gradient(135deg, #486547, #486547);
+  background: linear-gradient(135deg, #b46b78, #b46b78);
   color: white;
-  border-color: #486547;
+  border-color: #b46b78;
   transform: scale(1.05);
-  box-shadow: 0 5px 15px rgba(72, 101, 71, 0.4);
+  box-shadow: 0 5px 15px rgba(180, 107, 120, 0.4);
 }
 
 .wedding-section #itinerario {
@@ -539,7 +539,7 @@ p {
 .wedding-section .header-itinerario h1 {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(2.5rem, 5vw, 4rem);
-  color: #486547;
+  color: #b46b78;
   margin-bottom: 5px;
   text-align: center;
 }
@@ -568,7 +568,7 @@ p {
   top: 0;
   width: 2px;
   height: 100%;
-  background: linear-gradient(to bottom, #486547, #486547);
+  background: linear-gradient(to bottom, #b46b78, #b46b78);
   transform: translateX(-50%);
 }
 
@@ -595,12 +595,12 @@ p {
 
 .wedding-section .detalle-evento:hover {
   transform: translateX(-10px);
-  box-shadow: 0 10px 25px rgba(72, 101, 71, 0.3);
+  box-shadow: 0 10px 25px rgba(180, 107, 120, 0.3);
 }
 
 .wedding-section .detalle-evento p:first-child {
   font-weight: 600;
-  color: #486547;
+  color: #b46b78;
   font-size: 1.1rem;
   margin-bottom: 5px;
 }
@@ -613,20 +613,20 @@ p {
 .wedding-section .icono-evento {
   width: 80px;
   height: 80px;
-  background: linear-gradient(135deg, #486547, #486547);
+  background: linear-gradient(135deg, #b46b78, #b46b78);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 10;
-  box-shadow: 0 5px 20px rgba(72, 101, 71, 0.4);
+  box-shadow: 0 5px 20px rgba(180, 107, 120, 0.4);
   position: relative;
   transition: all 0.3s ease;
 }
 
 .wedding-section .icono-evento:hover {
   transform: scale(1.1) rotate(10deg);
-  box-shadow: 0 8px 30px rgba(72, 101, 71, 0.6);
+  box-shadow: 0 8px 30px rgba(180, 107, 120, 0.6);
 }
 
 .wedding-section .icono-evento img {
@@ -649,18 +649,18 @@ p {
   width: min(600px, 92vw);
   background: #fff;
   border-radius: 20px;
-  box-shadow: 0 20px 60px rgba(72, 101, 71, 0.2);
+  box-shadow: 0 20px 60px rgba(180, 107, 120, 0.2);
   padding: clamp(30px, 5vw, 60px) clamp(25px, 5vw, 60px);
   text-align: center;
   font-family: 'Montserrat', sans-serif;
   color: #111;
-  border: 1px solid rgba(72, 101, 71, 0.2);
+  border: 1px solid rgba(180, 107, 120, 0.2);
   transition: all 0.3s ease;
 }
 
 .invite-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 25px 70px rgba(72, 101, 71, 0.3);
+  box-shadow: 0 25px 70px rgba(180, 107, 120, 0.3);
 }
 
 .invite-title {
@@ -668,7 +668,7 @@ p {
   font-size: clamp(2rem, 4vw, 3.2rem);
   margin-bottom: 15px;
   line-height: 1.2;
-  color: #486547;
+  color: #b46b78;
   font-weight: 400;
   letter-spacing: 1px;
 }
@@ -770,7 +770,7 @@ p {
   margin-bottom: 20px;
   text-align: center;
   letter-spacing: 2px;
-  color: #486547;
+  color: #b46b78;
   font-weight: 400;
 }
 
@@ -788,7 +788,7 @@ p {
   top: 50%;
   width: 40%;
   height: 1px;
-  background: linear-gradient(to right, transparent, #486547, transparent);
+  background: linear-gradient(to right, transparent, #b46b78, transparent);
 }
 
 .regalos-section .divider::before { left: 0; }
@@ -797,7 +797,7 @@ p {
 .regalos-section .divider-icon {
   display: inline-block;
   font-size: 2rem;
-  color: #486547;
+  color: #b46b78;
 }
 
 .regalos-mensaje {
@@ -832,7 +832,7 @@ p {
 
 .regalo-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 15px 40px rgba(72, 101, 71, 0.3);
+  box-shadow: 0 15px 40px rgba(180, 107, 120, 0.3);
 }
 
 .regalo-icon {
@@ -860,7 +860,7 @@ p {
 .regalo-card h3 {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.8rem;
-  color: #486547;
+  color: #b46b78;
   margin-bottom: 10px;
 }
 
@@ -877,7 +877,7 @@ p {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: linear-gradient(135deg, #486547 0%, #3a5038 100%);
+  background: linear-gradient(135deg, #b46b78 0%, #7a4a52 100%);
   color: white;
   border: none;
   padding: 12px 30px;
@@ -886,14 +886,14 @@ p {
   cursor: pointer;
   transition: all 0.3s ease;
   font-family: 'Cairo', sans-serif;
-  box-shadow: 0 4px 15px rgba(72, 101, 71, 0.3);
+  box-shadow: 0 4px 15px rgba(180, 107, 120, 0.3);
   text-decoration: none;
 }
 
 .regalo-btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(72, 101, 71, 0.5);
-  background: linear-gradient(135deg, #3a5038 0%, #486547 100%);
+  box-shadow: 0 6px 20px rgba(180, 107, 120, 0.5);
+  background: linear-gradient(135deg, #7a4a52 0%, #b46b78 100%);
 }
 
 .regalo-btn svg {
@@ -945,7 +945,7 @@ p {
   top: 15px;
   right: 15px;
   font-size: 30px;
-  color: #486547;
+  color: #b46b78;
   background: none;
   border: none;
   cursor: pointer;
@@ -959,14 +959,14 @@ p {
 }
 
 .modal-close:hover {
-  background: rgba(72, 101, 71, 0.2);
+  background: rgba(180, 107, 120, 0.2);
   transform: rotate(90deg);
 }
 
 .modal-content h3 {
   font-family: 'Cormorant Garamond', serif;
   font-size: 2rem;
-  color: #486547;
+  color: #b46b78;
   margin-bottom: 30px;
   text-align: center;
 }
@@ -985,13 +985,13 @@ p {
   padding: 15px;
   background: #fdf8d4;
   border-radius: 10px;
-  border-left: 4px solid #486547;
+  border-left: 4px solid #b46b78;
 }
 
 .info-label {
   font-family: 'Cairo', sans-serif;
   font-weight: 600;
-  color: #3a5038;
+  color: #7a4a52;
   font-size: 0.95rem;
 }
 
@@ -1005,7 +1005,7 @@ p {
 .modal-note {
   font-family: 'Cairo', sans-serif;
   font-size: 0.85rem;
-  color: #3a5038;
+  color: #7a4a52;
   text-align: center;
   margin-top: 20px;
   font-style: italic;
@@ -1129,7 +1129,7 @@ p {
   font-size: 40px;
   color: #fff;
   cursor: pointer;
-  background: rgba(72, 101, 71, 0.3);
+  background: rgba(180, 107, 120, 0.3);
   border: none;
   width: 50px;
   height: 50px;
@@ -1142,7 +1142,7 @@ p {
 
 .lightbox-close:hover {
   transform: scale(1.2);
-  background: rgba(72, 101, 71, 0.6);
+  background: rgba(180, 107, 120, 0.6);
 }
 
 .lightbox-nav {
@@ -1152,7 +1152,7 @@ p {
   font-size: 50px;
   color: #fff;
   cursor: pointer;
-  background: rgba(72, 101, 71, 0.3);
+  background: rgba(180, 107, 120, 0.3);
   border: none;
   width: 60px;
   height: 60px;
@@ -1165,7 +1165,7 @@ p {
 }
 
 .lightbox-nav:hover {
-  background: rgba(72, 101, 71, 0.6);
+  background: rgba(180, 107, 120, 0.6);
   transform: translateY(-50%) scale(1.1);
 }
 
@@ -1404,7 +1404,7 @@ p {
   
   .wedding-section .date-celebration > div:first-child {
     border-right: none;
-    border-bottom: 2px solid #486547;
+    border-bottom: 2px solid #b46b78;
     padding-bottom: 10px;
   }
   
@@ -1532,13 +1532,13 @@ p {
 
 /* Ajuste para que el "Dress Code" no use el dorado si quieres total uniformidad */
 .dress-title {
-    color: #486547 !important; 
+    color: #b46b78 !important; 
 }
 
 .dress-type {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.8rem;
-    color: #486547;
+    color: #b46b78;
     margin: 10px 0;
 }
 
@@ -1582,7 +1582,7 @@ p {
     top: -12px;
     left: 50%;
     transform: translateX(-50%);
-    background: #f5f5f0; /* Color de fondo de tu body */
+    background: #fdf2f4; /* Color de fondo de tu body */
     padding: 0 10px;
     color: #b5a46d;
 }
@@ -1656,16 +1656,16 @@ p {
 
 
 .fotos-btn-subir {
-  background: #486547;
+  background: #b46b78;
   color: white;
-  border: 2px solid #486547;
+  border: 2px solid #b46b78;
 }
 
 .fotos-btn-subir:hover {
-  background: #3a5038;
-  border-color: #3a5038;
+  background: #7a4a52;
+  border-color: #7a4a52;
   transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(72, 101, 71, 0.35);
+  box-shadow: 0 8px 20px rgba(180, 107, 120, 0.35);
 }
 
 .fotos-nota {
@@ -1706,7 +1706,7 @@ p {
 .blessing-sub {
   font-family: 'Cormorant Garamond', serif;
   font-size: 2.5rem;
-  color: #486547;
+  color: #b46b78;
   margin: 10px 0 0px 0;
 }
 
@@ -1736,3 +1736,151 @@ p {
   color: #333;
   line-height: 1.4;
 }
+
+/* ======================================================
+   THEME OVERRIDE — boda-romantica — identidad visual distintiva
+   Generado 2026-09-02 — diferenciación solicitada
+====================================================== */
+
+/* Hero contraste: overlay degradado + vignette */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(to bottom, rgba(0,0,0,0) 32%, rgba(110,55,65,0.38) 64%, rgba(70,35,42,0.88) 100%);
+  pointer-events: none;
+}
+.hero-img {
+  filter: saturate(1.12) brightness(1.02);
+}
+
+/* Countdown — píldora legible sobre foto, con blur */
+.countdown-container {
+  background: rgba(255,242,244,0.20);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(232,160,168,0.40);
+  border-radius: 999px;
+  padding: 10px 18px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+}
+.countdown-unit {
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.35);
+  min-width: 64px;
+}
+.countdown-unit span {
+  opacity: 0.92;
+  letter-spacing: 0.8px;
+  font-size: 0.72rem !important;
+  text-transform: uppercase;
+}
+
+/* Nombres: caligrafía protagonista, contraste reforzado */
+.name-overlay {
+  text-shadow: 0 4px 30px rgba(0,0,0,0.55), 0 1px 2px rgba(0,0,0,0.6);
+  letter-spacing: 1.2px;
+  font-size: 7.3rem;
+}
+.name-overlay span {
+  color: #ffffff !important;
+}
+.name-overlay span:nth-child(2) {
+  font-size: 0.38em;
+  opacity: 0.96;
+  margin: 6px 0 -4px;
+  font-family: 'Cormorant Garamond', serif !important;
+  font-weight: 300;
+  letter-spacing: 10px;
+  text-transform: uppercase;
+}
+.hero-subtitle {
+  background: rgba(0,0,0,0.28);
+  backdrop-filter: blur(6px);
+  padding: 6px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.18);
+  font-size: 0.78rem !important;
+  letter-spacing: 2.2px !important;
+}
+
+/* Cards: radio y sombra distintivos */
+.wedding-section .details .box,
+.regalo-card,
+.fotos-container {
+  border-radius: 24px !important;
+}
+.wedding-section .details .box {
+  border: 1px solid rgba(180,107,120,0.13);
+}
+.wedding-section .details .box:hover {
+  box-shadow: 0 18px 50px rgba(180, 107, 120,0.22) !important;
+}
+
+/* Divider y headings */
+.wedding-section .mainText {
+  font-weight: 300 !important;
+  letter-spacing: 1.5px;
+  color: #b46b78 !important;
+}
+.wedding-section .divider::before,
+.wedding-section .divider::after,
+.regalos-section .divider::before,
+.regalos-section .divider::after {
+  background: linear-gradient(to right, transparent, #e8a0a8, transparent) !important;
+}
+.wedding-section .date-celebration > div:first-child {
+  border-right-color: #b46b78 !important;
+}
+.wedding-section .date-celebration p {
+  color: #b46b78 !important;
+}
+
+/* Botones */
+.ubication, .regalo-btn, .fotos-btn {
+  border-color: #b46b78 !important;
+  color: #b46b78 !important;
+}
+.ubication:hover, .regalo-btn:hover, .fotos-btn:hover,
+.fotos-btn-subir:hover {
+  background: #b46b78 !important;
+  color: white !important;
+  border-color: #b46b78 !important;
+}
+
+/* Itinerario — línea y puntos */
+.linea-tiempo::before {
+  background: #b46b78 !important;
+}
+.evento .icono-evento {
+  border-color: #b46b78 !important;
+}
+.header-itinerario h1 {
+  color: #b46b78 !important;
+  font-weight: 300 !important;
+}
+
+/* Ajustes tipográficos distintivos por tema */
+
+
+
+/* ROMÁNTICA — suave, redondeada, script protagonista, aire */
+body { font-size: 17.5px; }
+.wedding-section .mainText { font-size: clamp(2.6rem, 6vw, 4.2rem); letter-spacing: 1px; }
+.name-overlay { font-size: 7.6rem; }
+.blessing-sub { letter-spacing: 1px; font-style: italic; }
+.box { box-shadow: 0 12px 40px rgba(180,107,120,0.14) !important; }
+
+
+/* Accesibilidad contraste */
+@media (prefers-contrast: more) {
+  .overlay-content { background: rgba(0,0,0,0.22); }
+}
+
+/* Responsive hero */
+@media (max-width: 600px) {
+  .name-overlay { font-size: 4.8rem !important; }
+  .countdown-unit { font-size: 2.2rem !important; min-width: 54px; }
+}
+
