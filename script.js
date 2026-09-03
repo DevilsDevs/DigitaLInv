@@ -41,9 +41,17 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   })
 
-  /* 3. AOS animations (respeta prefers-reduced-motion) */
-  if (window.AOS && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    AOS.init({ duration: 700, easing: "ease-out-cubic", once: true, offset: 40 })
+  /* 3. AOS animations (respeta prefers-reduced-motion)
+     NOTA: se usa `disable`, no un condicional, para que cuando haya
+     movimiento reducido AOS NO oculte los [data-aos] (evita cards en blanco). */
+  if (window.AOS) {
+    AOS.init({
+      duration: 700,
+      easing: "ease-out-cubic",
+      once: true,
+      offset: 40,
+      disable: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    })
   }
 
   /* 4. Carousel de eventos — Swiper (táctil, autoplay) */
@@ -96,9 +104,57 @@ document.addEventListener("DOMContentLoaded", () => {
     window.scrollTo({ top: 0, behavior: "smooth" })
   })
 
-  /* 7. Galería — GLightbox preview */
+  /* 7. Galería — GLightbox: cada plantilla abre un carrousel
+     de varias fotos. Usamos la API (elements + open) que es robusta:
+     cada card muestra su foto principal y al hacer click abre las 4
+     fotos de esa plantilla como carrousel navegable. */
   if (window.GLightbox) {
-    GLightbox({ selector: ".glightbox-img", touchNavigation: true, loop: true, zoomable: true })
+    const PLANTILLA_FOTOS = {
+      "boda-clasica": {
+        titulo: "Boda Clásica — Laura & Daniel",
+        fotos: [
+          "https://images.unsplash.com/photo-1519741497674-611481863552?w=1600&q=80&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1600&q=80&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=1600&q=80&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1600&q=80&auto=format&fit=crop"
+        ]
+      },
+      "boda-dorada": {
+        titulo: "Boda Dorada — Ana & Luis",
+        fotos: [
+          "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1600&q=80&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1600&q=80&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1519741497674-611481863552?w=1600&q=80&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1600&q=80&auto=format&fit=crop"
+        ]
+      },
+      "boda-romantica": {
+        titulo: "Boda Romántica — Sofía & Mateo",
+        fotos: [
+          "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=1600&q=80&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1529634597503-139d3726fed5?w=1600&q=80&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1600&q=80&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1460978812857-470ed1c77af0?w=1600&q=80&auto=format&fit=crop"
+        ]
+      }
+    }
+
+    const galleryLightbox = GLightbox({ selector: ".glightbox-img", touchNavigation: true, loop: true })
+
+    document.querySelectorAll(".glightbox-img[data-plantilla]").forEach((trigger) => {
+      trigger.addEventListener("click", (e) => {
+        const data = PLANTILLA_FOTOS[trigger.getAttribute("data-plantilla")]
+        if (!data) return
+        e.preventDefault()
+        const items = data.fotos.map((href, i) => ({
+          href: href,
+          type: "image",
+          title: data.titulo + (data.fotos.length > 1 ? ` (${i + 1}/${data.fotos.length})` : "")
+        }))
+        galleryLightbox.setElements(items)
+        galleryLightbox.open(items[0])
+      })
+    })
   }
 
   /* 8. Formulario — toast en vez de alert */
