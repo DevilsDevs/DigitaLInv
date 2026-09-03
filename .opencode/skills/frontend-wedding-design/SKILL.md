@@ -9,7 +9,8 @@ Expert frontend system for wedding invitation templates (bodas, XV, cumpleaños)
 
 ## 1. Architecture principles
 
-- **No build step** — plain HTML/CSS/JS, no bundler. Each `boda-*` is self-contained (`index.html` + `css/` + `js/` + `img/`). No Next.js, no Tailwind build, no npm `dev` script.
+- **Build allowed IF GitHub Pages compatible** — libraries/frameworks are permitted **only** when the final artifact is static (`index.html`+`css`+`js` deployable on GitHub Pages): Astro/Eleventy/Vite build, Next.js `output:'export'`, Tailwind via CDN without build, client-side libs via CDN (qrcodejs, lightbox). **Forbidden** anything needing persistente SSR/server runtime or ports (Next.js API routes in static deploy, Node in prod). Default to plain HTML/CSS/JS for the 3 `boda-*` while <10 themes; migrate to static Astro if >5 themes (see `docs/FRONTEND.md` §4).
+- Each `boda-*` is self-contained (`index.html` + `css/` + `js/` + `img/`).
 - **One layout, N themes** — single HTML structure per plantilla; theming is ONLY via `:root` CSS variables. Never duplicate 1700 lines per theme. Each theme file overrides ` --color-*`.
 - **Mobile-first**: base styles target 320px. Breakpoints: `@media (min-width: 600px)` tablet, `@media (min-width: 1024px)` desktop. Never use `max-width` chains; consolidate.
 - **Separate concerns**: `index.html` (semántico), `css/index.css` (layout + variables + responsive), `js/script.js` (progressive enhancement). No inline `style` salvo fallback.
@@ -68,8 +69,9 @@ Themes override only variables: `boda-clasica` (salvia #486547), `boda-dorada` (
 ### Layout patterns
 
 - Hero: `position: relative; height: 100dvh;` image `object-fit: cover; width:100%; height:100%`.
+- **Countdown hero must stay centered at 320px**: `.countdown-container{display:flex;flex-wrap:nowrap;justify-content:center;align-items:center;margin:0 auto}`, `.overlay-content{justify-content:center;gap:12px}`, `.countdown-unit span{white-space:nowrap}`. `flex-wrap:wrap` splits blocks and throws off-center — check at 320px.
 - Details: `display: grid; gap: 24px;` 1 col mobile, 3 cols @1024px.
-- Collage: `columns: 2` mobile, `columns: 3` desktop + `break-inside: avoid`.
+- Collage: `columns: 2` mobile, `columns: 3` desktop + `break-inside: avoid` (a dead image URL = ugly gap → validate all externals first).
 - Timeline: vertical line `::before` centered, eventos alternados.
 
 ### Responsive (only min-width)
@@ -143,20 +145,29 @@ Never autoplay without interaction; never block render waiting for `ROSALIA.mp3`
 
 ## 5. Assets
 
-- Hero/gallery in landing: **stock Unsplash generic** (venue, floral, ring) — no real couple EXIF. Icons keep neutral PNGs (`Anillo.png`, `camera.png`, `iglesia_icon.png`, etc.).
+- Hero/gallery in landing: **stock Unsplash generic** (venue, floral, ring) — no real couple EXIF. Icons keep neutral PNGs (`anillo.png` lowercase!, `camera.png`, `iglesia_icon.png`, etc.).
 - Use absolute sizes: hero 3600×2400 is too big — serve `w=1200` via Unsplash `?w=1200&q=80&auto=format`.
 - Never commit `*.mp3` >5MB unless needed; defer music.
+- **Local image paths are case-sensitive** (Linux/GitHub Pages). `src` must match the real file exactly (`./img/anillo.png`, NOT `./img/Anillo.png`) — a broken image breaks its whole container block, not just leaves a hole.
+- **Do NOT reuse background/pattern assets as content photos**: `fondo.jpg` (repeat texture) must never stand in for a real reception/venue photo in details/gallery.
+- **Validate every external URL → HTTP 200 before commit**, individually (batch Unsplash checks have flaky 404/200 from rate-limiting). Verified wedding IDs: `1519671482749-fd09be7ccebf`, `1519225421980-715cb0215aed`, `1519167758481-83f550bb49b3`, `1507679799987-c73779587ccf`, `1465495976277`, `1532712938310-34cb3982ef74`, `1511285560929-80b456fea0bc`, `1490481651871-ab68de25d43d`, `1495385794356`. Also reason that the image matches the section's concept (dress code = formal/elegant, reception = garden/banquet, ring = close-up).
+- **Sidebar nav icons must be uniform**: same square canvas (512×512) + same color (gold silhouettes, RGB 160,128,64, ~66% scale, transparent bg). Normalize with PIL; `object-fit:contain` alone does NOT equalize different aspect ratios/colors. Keep distinct files for nav vs section (e.g. gold `nav-camera.png` for the side panel vs green `camera.png` for `#fotos`).
 
 ## 6. Checklist before commit
 
-- [ ] No real names (Karen & Erick), maps, CLABE, wishlist hardcodeados en landing.
+- [ ] No real names (Karen & Erick), maps, CLABE, wishlist hardcodeados en landing (`grep -R "Vellum\|Karen\|Erick\|012 225\|maps.app.goo.gl\|wishlist"`).
 - [ ] `html lang="es"`, meta viewport, og/twitter canonical.
 - [ ] Fonts with `display=swap` + `preconnect`.
 - [ ] Hero `eager`/`fetchpriority`, gallery `lazy`, video `poster`.
 - [ ] `prefers-reduced-motion` respected, `aria-label` on lightbox/nav, contrast ok.
 - [ ] `@media` only `min-width:600px` / `1024px`, no duplicates.
 - [ ] Countdown date is future fictitious matching plantilla header.
+- [ ] Countdown centered + `nowrap` at 320px.
+- [ ] **All local `src` resolve exactly (case-sensitive)** — verify file exists.
+- [ ] **All external image URLs return 200** (checked individually); match section concept.
+- [ ] **Sidebar icons uniform** 512×512 same-color; no dead gallery image gaps.
 - [ ] Lightbox + nav + observer work at 320px/1024px (`python3 -m http.server`).
+- [ ] `git fetch`/`pull --rebase` before `push` if `detrás N`.
 
 ## 7. Anti-patterns
 
@@ -164,4 +175,11 @@ Never autoplay without interaction; never block render waiting for `ROSALIA.mp3`
 - No JS commented blocks 50+ lines — delete or feature-flag.
 - No `index_naranja.html → index.css` mismatch — themes link their own css.
 - No `placeHolder.svg` with capital P — verify file exists.
-- No `package.json` Next.js when project is static HTML.
+- No `package.json` Next.js **when it can't build to static** — but frameworks ARE ok if they output static for GitHub Pages (`output:'export'`, Astro, CDN libs).
+- No `./img/Anillo.png` (wrong case) — case-sensitive paths.
+- No `fondo.jpg`/texture reused as a content photo.
+- No dead Unsplash URL left in collapse (404 → 200 check first).
+- No mismatch between CNAME domain and actual brand (e.g. `vellumdigitall.online` vs DigitalInv).
+- No mixed-size/color sidebar icons in the same panel.
+
+> Lessons source: `docs/ERRORES_APRENDIDOS.md` (2026-09-02).
