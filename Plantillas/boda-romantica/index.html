@@ -15,7 +15,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.cdnfonts.com">
     <link href="https://fonts.cdnfonts.com/css/miama" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: { extend: { fontFamily: { heading: ['Cormorant Garamond','serif'], body: ['DM Sans','sans-serif'], display: ['Playfair Display','serif'] } } }
+        };
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
     <link rel="stylesheet" href="./css/index.css">
     <link rel="icon" type="image/png" href="./img/anillo.png">
 </head>
@@ -41,7 +49,7 @@
 
 <main>
     <div class="wedding-section">
-        <div class="blessing">
+        <div class="blessing" data-aos="fade-up">
             <p class="blessing-sub">Con la bendición de Dios y</p>
             <p class="blessing-sub">Nuestros Padres</p>
             <div class="parents">
@@ -57,7 +65,7 @@
             <div class="divider"><span class="divider-icon">♦</span></div>
         </div>
 
-        <div class="box">
+        <div class="box" data-aos="fade-up">
             <h2 class="mainText">¡Estás Invitado!</h2>
             <p class="principal-font">Queremos que seas parte de este momento tan especial en nuestras vidas</p>
             <p style="font-size:0.85rem; color:var(--color-muted); margin-top:8px; font-family:'DM Sans',sans-serif;">Plantilla demo — datos ficticios</p>
@@ -65,7 +73,7 @@
         </div>
 
         <div class="details">
-            <div class="box">
+            <div class="box" data-aos="fade-up" data-aos-delay="0">
                 <img src="./img/anillo.png" alt="Anillo de boda" loading="lazy" decoding="async">
                 <h2>CEREMONIA</h2>
                 <p>Templo de Santa Rosa</p>
@@ -77,14 +85,14 @@
                 <p>Calle Rosal 789, Centro Histórico, 72000 Puebla, Pue.</p>
                 <button class="ubication" onclick="window.open('https://maps.google.com/?q=Templo de Santa Rosa')" aria-label="Ver ubicación ceremonia">Ver Ubicación</button>
             </div>
-            <div class="box">
+            <div class="box" data-aos="fade-up" data-aos-delay="100">
                 <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=800&q=80&auto=format&fit=crop" alt="Recepción — jardín del evento" style="width:100%; height:180px; object-fit:cover; border-radius:12px;" loading="lazy" decoding="async">
                 <h2>RECEPCIÓN</h2>
                 <p>Villa Rosé</p>
                 <p>Blvd. Rosal 321, La Paz, 72160 Puebla, Pue.</p>
                 <button class="ubication" onclick="window.open('https://maps.google.com/?q=Villa Rosé')" aria-label="Ver ubicación recepción">Ver Ubicación</button>
             </div>
-            <div class="box">
+            <div class="box" data-aos="fade-up" data-aos-delay="200">
                 <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800&q=80&auto=format&fit=crop" alt="Dress Code — formal elegante" loading="lazy" decoding="async">
                 <h2 class="dress-title">DRESS CODE</h2>
                 <p>Formal | Etiqueta</p>
@@ -119,23 +127,23 @@
         </section>
     </div>
 
-    <section id="galeria" class="collage">
+    <section id="galeria" class="collage" data-aos="fade-up">
         <h2 class="mainText">Nosotros</h2>
         <p style="text-align:center; color:var(--color-muted); font-family:'DM Sans',sans-serif; font-size:0.9rem; margin-bottom:16px;">Fotos de ejemplo — reemplaza con tus fotos reales</p>
         <div class="container-img">
-            <div class="box-img"><img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=800&q=80&auto=format&fit=crop" alt="Galería Sofía & Mateo — foto 1" loading="lazy" decoding="async"></div>
-            <div class="box-img"><img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800&q=80&auto=format&fit=crop" alt="Galería Sofía & Mateo — foto 2" loading="lazy" decoding="async"></div>
-            <div class="box-img"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80&auto=format&fit=crop" alt="Galería Sofía & Mateo — foto 3" loading="lazy" decoding="async"></div>
-            <div class="box-img"><img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&q=80&auto=format&fit=crop" alt="Galería Sofía & Mateo — foto 4" loading="lazy" decoding="async"></div>
-            <div class="box-img"><img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&q=80&auto=format&fit=crop" alt="Galería Sofía & Mateo — foto 5" loading="lazy" decoding="async"></div>
-            <div class="box-img"><img src="https://images.unsplash.com/photo-1474552226712-ac0f0961a954?w=800&q=80&auto=format&fit=crop" alt="Galería Sofía & Mateo — foto 6" loading="lazy" decoding="async"></div>
-            <div class="box-img"><img src="https://images.unsplash.com/photo-1529634597503-139d3726fed5?w=800&q=80&auto=format&fit=crop" alt="Galería Sofía & Mateo — foto 7" loading="lazy" decoding="async"></div>
+            <div class="box-img"><a href="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1600&q=80&auto=format&fit=crop" data-gallery="boda" data-glightbox="title: Galería 1 — el primer vals" class="glightbox"><img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=800&q=80&auto=format&fit=crop" alt="Galería Sofía & Mateo — foto 1" loading="lazy" decoding="async"></a></div>
+            <div class="box-img"><a href="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=1600&q=80&auto=format&fit=crop" data-gallery="boda" data-glightbox="title: Galería 2 — la mesa de honor" class="glightbox"><img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800&q=80&auto=format&fit=crop" alt="Galería Sofía & Mateo — foto 2" loading="lazy" decoding="async"></a></div>
+            <div class="box-img"><a href="https://images.unsplash.com/photo-1519741497674-611481863552?w=1600&q=80&auto=format&fit=crop" data-gallery="boda" data-glightbox="title: Galería 3 — el altar" class="glightbox"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80&auto=format&fit=crop" alt="Galería Sofía & Mateo — foto 3" loading="lazy" decoding="async"></a></div>
+            <div class="box-img"><a href="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1600&q=80&auto=format&fit=crop" data-gallery="boda" data-glightbox="title: Galería 4 — los anillos" class="glightbox"><img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&q=80&auto=format&fit=crop" alt="Galería Sofía & Mateo — foto 4" loading="lazy" decoding="async"></a></div>
+            <div class="box-img"><a href="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1600&q=80&auto=format&fit=crop" data-gallery="boda" data-glightbox="title: Galería 5 — el brindis" class="glightbox"><img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&q=80&auto=format&fit=crop" alt="Galería Sofía & Mateo — foto 5" loading="lazy" decoding="async"></a></div>
+            <div class="box-img"><a href="https://images.unsplash.com/photo-1474552226712-ac0f0961a954?w=1600&q=80&auto=format&fit=crop" data-gallery="boda" data-glightbox="title: Galería 6 — la pista" class="glightbox"><img src="https://images.unsplash.com/photo-1474552226712-ac0f0961a954?w=800&q=80&auto=format&fit=crop" alt="Galería Sofía & Mateo — foto 6" loading="lazy" decoding="async"></a></div>
+            <div class="box-img"><a href="https://images.unsplash.com/photo-1529634597503-139d3726fed5?w=1600&q=80&auto=format&fit=crop" data-gallery="boda" data-glightbox="title: Galería 7 — despedida" class="glightbox"><img src="https://images.unsplash.com/photo-1529634597503-139d3726fed5?w=800&q=80&auto=format&fit=crop" alt="Galería Sofía & Mateo — foto 7" loading="lazy" decoding="async"></a></div>
         </div>
 
 </section>
 
     <section id="fotos" class="fotos-section">
-        <div class="fotos-container">
+        <div class="fotos-container" data-aos="fade-up">
             <div class="fotos-icon"><img src="./img/camera.png" alt="Cámara" loading="lazy"></div>
             <h2 class="mainText">Álbum de la Boda</h2>
             <div class="divider"></div>
@@ -151,7 +159,7 @@
     </section>
 <!-- QR DEMO INTERACTIVO — ejemplo, no backend real -->
     <section id="qr-demo" class="qr-demo-section">
-        <div class="qr-demo-container">
+        <div class="qr-demo-container" data-aos="fade-up">
             <div class="qr-demo-header">
                 <p class="qr-kicker">Acceso Demo · Interactiva</p>
                 <h2 class="mainText">Tu Pase</h2>
@@ -179,7 +187,7 @@
 
 
     <section id="regalos" class="regalos-section">
-        <div class="regalos-container">
+        <div class="regalos-container" data-aos="fade-up">
             <h2 class="mainText">Mesa de Regalos</h2>
             <div class="divider"><span class="divider-icon">♦</span></div>
             <p class="regalos-mensaje">Lo más importante es tu presencia, pero si deseas hacernos un regalo es bienvenido</p>
@@ -234,12 +242,6 @@
         </div>
     </div>
 
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Galería ampliada">
-    <button class="lightbox-close" id="lightbox-close" aria-label="Cerrar">&times;</button>
-    <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Anterior">&#8249;</button>
-    <div class="lightbox-content"><img id="lightbox-img" src="" alt="Imagen ampliada"></div>
-    <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Siguiente">&#8250;</button>
-</div>
 
 <p style="text-align:center; padding:30px 20px; color:var(--color-muted); font-family:'DM Sans',sans-serif; font-size:0.85rem;">
     Plantilla <strong>boda-romantica</strong> · <a href="../../index.html" style="color:var(--color-primary);">← Volver al landing</a> · Demo interactiva
@@ -248,6 +250,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>window.QR_DEMO_CONFIG = { text: "DEMO-DIGITALINV-ROMANTICA-SOFIA-MATEO-M12-2P-2026", guest: "Familia Ortiz", personas: 2, mesa: 12 };</script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
 <script src="./js/script.js"></script>
 </body>
 </html>

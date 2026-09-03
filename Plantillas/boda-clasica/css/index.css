@@ -1837,10 +1837,16 @@ p {
   color: #486547 !important;
 }
 
-/* Botones */
-.ubication, .regalo-btn, .fotos-btn {
+/* Botones — .ubication (outline) usa color del tema; los botones de acción
+   (.regalo-btn, .fotos-btn) llevan relleno del tema con TEXTO BLANCO legible. */
+.ubication {
   border-color: #486547 !important;
   color: #486547 !important;
+}
+.regalo-btn, .fotos-btn {
+  border-color: #486547 !important;
+  color: #ffffff !important;
+  background: #486547 !important;
 }
 .ubication:hover, .regalo-btn:hover, .fotos-btn:hover,
 .fotos-btn-subir:hover {
@@ -2286,4 +2292,131 @@ body { font-size: 17.5px; }
 }
 .countdown-unit span {
   white-space: nowrap;
+}
+
+/* ======================================================
+   REFINAMIENTO PREMIUM — tipografía + micro-interacciones
+   (Playfair Display via CDN; mejoras sobre el sistema base)
+====================================================== */
+:root {
+  --font-display: 'Miama', cursive;
+  --font-heading: 'Cormorant Garamond', serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+  --font-premium: 'Playfair Display', serif;
+}
+
+/* Acentos elegantes en serif premium itálica (solo zona QR) */
+.qr-kicker,
+.qr-subtitle {
+  font-family: var(--font-premium);
+}
+
+/* Padres del novio/novia — MISMO serif elegante tipo Times que los títulos
+   (Cormorant Garamond) para evitar mezcla de fuentes. */
+.blessing-sub,
+.parent-role,
+.parent-names {
+  font-family: 'Cormorant Garamond', serif;
+}
+.blessing-sub {
+  letter-spacing: 0.04em;
+}
+.parent-role {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 1.35rem;
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
+/* Títulos con tipografía premium y tracking fino */
+.mainText,
+.fotos-section .mainText,
+.qr-demo-section .mainText,
+.regalos-section .mainText,
+.collage .mainText {
+  font-family: var(--font-heading);
+  letter-spacing: 0.04em;
+  font-weight: 600;
+}
+
+/* Nombre hero — Miama elegante con leve sombra de lujo */
+.name-overlay span {
+  text-shadow: 0 3px 18px rgba(0,0,0,0.35);
+}
+
+/* Hero: velo degradado para legibilidad premium */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.02) 35%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.45) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+.hero .overlay-content,
+.name-overlay,
+.hero-subtitle {
+  position: relative;
+  z-index: 2;
+}
+
+/* Galería: zoom sutil al hover */
+.box-img {
+  overflow: hidden;
+  border-radius: 14px;
+}
+.box-img img {
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.box-img:hover img {
+  transform: scale(1.06);
+}
+
+/* Cards de detalles: elevación y borde refinado */
+.details .box {
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+  will-change: transform;
+}
+.details .box:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card, 0 20px 60px rgba(72,101,71,0.18));
+  border-color: var(--color-primary);
+}
+
+/* Micro-interacción en botones de ubicación/regalo */
+.ubication,
+.regalo-btn {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.ubication:hover,
+.regalo-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.15);
+}
+
+/* Separador con ornament al centro, más fino */
+.divider {
+  position: relative;
+}
+
+/* Hacer los títulos de sección algo más altos (leer mejor) */
+.header-itinerario h1,
+.qr-demo-header h2 {
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .box-img img,
+  .details .box,
+  .ubication,
+  .regalo-btn {
+    transition: none !important;
+  }
+  .box-img:hover img,
+  .details .box:hover {
+    transform: none;
+  }
 }

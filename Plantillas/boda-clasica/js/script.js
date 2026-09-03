@@ -2,25 +2,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // Plantilla boda-clasica — Laura & Daniel — demo, sin backend
     // Countdown objetivo: 2026-09-14T17:00:00 (ficticio)
 
-    /* 1. IntersectionObserver reveal */
-    const fadeElements = document.querySelectorAll("h1, h2, p, img, .box, .container-img");
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (!reduceMotion) {
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.transition = "opacity 0.4s ease, transform 0.4s ease";
-                    entry.target.style.opacity = 1;
-                    entry.target.style.transform = "translateY(0)";
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.2 });
-        fadeElements.forEach(el => {
-            el.style.opacity = 0;
-            el.style.transform = "translateY(30px)";
-            observer.observe(el);
-        });
+    /* 1. Animaciones al hacer scroll — AOS.js (respetando prefers-reduced-motion) */
+    if (window.AOS && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        AOS.init({ duration: 700, easing: "ease-out-cubic", once: true, offset: 40 });
     }
 
     /* 2. Música — solo tras interacción */
@@ -79,48 +63,10 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    /* 5. Lightbox galería */
-    const galleryImages = document.querySelectorAll('.container-img .box-img img');
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-    const lightboxClose = document.getElementById('lightbox-close');
-    const lightboxPrev = document.getElementById('lightbox-prev');
-    const lightboxNext = document.getElementById('lightbox-next');
-    let currentImageIndex = 0;
-    const imageSources = Array.from(galleryImages).map(img => img.src);
-    function openLightbox(index) {
-        currentImageIndex = index;
-        lightboxImg.src = imageSources[currentImageIndex];
-        lightbox.classList.add('active');
-        document.body.style.overflow = 'hidden';
+    /* 5. Galería — GLightbox (reemplaza el lightbox casero) */
+    if (window.GLightbox) {
+        GLightbox({ selector: ".glightbox", touchNavigation: true, loop: true, zoomable: true, draggable: true });
     }
-    function closeLightbox() {
-        lightbox.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-    function showPrevImage() {
-        currentImageIndex = (currentImageIndex - 1 + imageSources.length) % imageSources.length;
-        lightboxImg.src = imageSources[currentImageIndex];
-    }
-    function showNextImage() {
-        currentImageIndex = (currentImageIndex + 1) % imageSources.length;
-        lightboxImg.src = imageSources[currentImageIndex];
-    }
-    galleryImages.forEach((img, index) => {
-        img.addEventListener('click', () => openLightbox(index));
-        img.setAttribute('loading', 'lazy');
-        img.setAttribute('decoding', 'async');
-    });
-    if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
-    if (lightboxPrev) lightboxPrev.addEventListener('click', showPrevImage);
-    if (lightboxNext) lightboxNext.addEventListener('click', showNextImage);
-    if (lightbox) lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
-    document.addEventListener('keydown', (e) => {
-        if (!lightbox || !lightbox.classList.contains('active')) return;
-        if (e.key === 'Escape') closeLightbox();
-        if (e.key === 'ArrowLeft') showPrevImage();
-        if (e.key === 'ArrowRight') showNextImage();
-    });
 
     /* 6. Modal regalos (demo, sin CLABE real) */
     const modal = document.getElementById('cuenta-modal');
