@@ -2269,3 +2269,21 @@ body { font-size: 17.5px; }
   }
 }
 
+
+/* ======================================================
+   FIX COUNTDOWN — centrado y sin desbordes en el hero
+====================================================== */
+.overlay-content {
+  justify-content: center !important;
+  gap: 12px;
+}
+.countdown-container {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin: 0 auto !important;
+}
+.countdown-unit span {
+  white-space: nowrap;
+}
