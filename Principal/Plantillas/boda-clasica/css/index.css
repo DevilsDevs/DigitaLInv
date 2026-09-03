@@ -2171,6 +2171,9 @@ body { font-size: 17.5px; }
   object-fit: contain;
   transition: all 0.22s ease;
   opacity: 0.85;
+  /* Mismo color dorado para todos los iconos del sidebar */
+  filter: sepia(1) saturate(3.2) hue-rotate(12deg) brightness(0.72) contrast(1.05);
+  -webkit-filter: sepia(1) saturate(3.2) hue-rotate(12deg) brightness(0.72) contrast(1.05);
 }
 /* Hover: suave, con leve escala */
 .panel-navegacion li:hover {
