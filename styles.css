@@ -265,7 +265,11 @@ body{
 }
 .gallery-overlay h3{ font-family:var(--font-display); font-size:1.05rem; font-weight:400; letter-spacing:0.02em; margin:0; }
 .gallery-overlay p{ font-size:0.78rem; opacity:0.92; font-weight:300; letter-spacing:0.04em; margin:0; }
-a.gallery-item .gallery-overlay{ background:linear-gradient(to top, rgba(26,26,26,0.78) 0%, rgba(26,26,26,0.15) 55%, transparent 100%); }
+.gallery-item .gallery-overlay{ background:linear-gradient(to top, rgba(26,26,26,0.78) 0%, rgba(26,26,26,0.15) 55%, transparent 100%); }
+.gallery-item .glightbox-img{ display:block; width:100%; height:100%; }
+.gallery-item .glightbox-img img{ width:100%; height:100%; object-fit:cover; }
+.gallery-link{ color:var(--color-gold,#c9a86a); text-decoration:none; font-weight:500; }
+.gallery-link:hover{ text-decoration:underline; }
 
 /* Contacto — más limpio */
 .contacto{ padding:84px 28px; background:var(--color-bg); }
@@ -354,4 +358,75 @@ a.gallery-item .gallery-overlay{ background:linear-gradient(to top, rgba(26,26,2
   .hero{ padding:36px 18px 40px; }
   .container, .nav{ padding-left:18px; padding-right:18px; }
   .pricing-card, .contact-form{ padding:20px 18px; }
+}
+
+/* ======================================================
+   REFINAMIENTO PREMIUM + INTERACTIVO
+====================================================== */
+/* Tipografía premium: títulos editorial */
+.section-title{
+  font-family:'Cormorant Garamond', serif;
+  font-weight:600;
+  letter-spacing:0.02em;
+}
+.hero-title{ letter-spacing:-0.01em; }
+.hero-eyebrow{ letter-spacing:0.18em; font-family:'DM Sans',sans-serif; }
+
+/* Header sticky con blur al hacer scroll */
+.header{ position:sticky; top:0; z-index:50; transition:box-shadow 0.3s ease, background 0.3s ease, backdrop-filter 0.3s ease; }
+.header.scrolled{
+  background:rgba(253,248,243,0.85);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  box-shadow:0 1px 20px rgba(26,26,26,0.08);
+}
+
+/* Back to top */
+.back-to-top{
+  position:fixed; right:22px; bottom:86px; z-index:60;
+  width:44px; height:44px; border-radius:50%;
+  background:var(--color-text,#222); color:#fff;
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 6px 20px rgba(26,26,26,0.25);
+  border:none; cursor:pointer;
+  opacity:0; transform:translateY(16px); visibility:hidden;
+  transition:opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+}
+.back-to-top.visible{ opacity:1; transform:translateY(0); visibility:visible; }
+.back-to-top:hover{ background:var(--color-gold,#c9a86a); }
+
+/* Toast de confirmación del formulario */
+.toast{
+  position:fixed; left:50%; bottom:28px; transform:translateX(-50%) translateY(20px);
+  background:#26342b; color:#fff; padding:14px 22px; border-radius:50px;
+  font-size:0.85rem; letter-spacing:0.03em; box-shadow:0 10px 30px rgba(26,26,26,0.3);
+  opacity:0; visibility:hidden; transition:all 0.35s ease; z-index:80;
+}
+.toast.show{ opacity:1; transform:translateX(-50%) translateY(0); visibility:visible; }
+
+@media (prefers-reduced-motion: reduce){
+  .back-to-top, .toast{ transition:none; }
+}
+
+/* ======================================================
+   SWIPER — carousel de eventos (táctil) overrides
+====================================================== */
+.carousel-track.swiper-wrapper{ display:flex; grid-template-columns:none; gap:0; padding-bottom:12px; }
+.carousel-slide.swiper-slide{ height:auto; }
+.carousel-btn.swiper-button-prev, .carousel-btn.swiper-button-next{
+  display:flex !important; align-items:center; justify-content:center;
+  width:46px; height:46px; border-radius:50%;
+  background:var(--color-surface-2); border:1px solid var(--color-border-strong);
+  color:var(--color-text); box-shadow:0 4px 16px rgba(26,26,26,0.12);
+  top:50%; transform:translateY(-50%); z-index:20;
+}
+.carousel-btn.swiper-button-prev:hover, .carousel-btn.swiper-button-next:hover{ background:var(--color-gold); color:#fff; }
+.carousel-btn.swiper-button-prev{ left:-20px; } .carousel-btn.swiper-button-next{ right:-20px; }
+.carousel-btn.swiper-button-next::after, .carousel-btn.swiper-button-prev::after{ content:none; }
+.swiper-pagination.carousel-dots{ display:block !important; position:static; margin-top:22px; text-align:center; }
+.swiper-pagination .swiper-pagination-bullet{ width:8px; height:8px; background:var(--color-border-strong); opacity:1; border-radius:50%; }
+.swiper-pagination .swiper-pagination-bullet-active{ background:var(--color-gold); width:24px; border-radius:99px; }
+
+@media (max-width:640px){
+  .carousel-btn.swiper-button-prev{ left:-6px; } .carousel-btn.swiper-button-next{ right:-6px; }
 }

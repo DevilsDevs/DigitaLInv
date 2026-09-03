@@ -1,203 +1,126 @@
-// Mobile Navigation Toggle
-const navToggle = document.querySelector(".nav-toggle")
-const navMenu = document.querySelector(".nav-menu")
+// ========================================================
+// DigitalInv Landing — interactivo (AOS, Swiper, GLightbox)
+// ========================================================
 
-navToggle.addEventListener("click", () => {
-  navMenu.classList.toggle("active")
-
-  // Animate hamburger icon
-  const spans = navToggle.querySelectorAll("span")
-  if (navMenu.classList.contains("active")) {
-    spans[0].style.transform = "rotate(45deg) translateY(8px)"
-    spans[1].style.opacity = "0"
-    spans[2].style.transform = "rotate(-45deg) translateY(-8px)"
-  } else {
-    spans[0].style.transform = "none"
-    spans[1].style.opacity = "1"
-    spans[2].style.transform = "none"
-  }
-})
-
-// Close menu when clicking on a link
-document.querySelectorAll(".nav-menu a").forEach((link) => {
-  link.addEventListener("click", () => {
-    navMenu.classList.remove("active")
+document.addEventListener("DOMContentLoaded", () => {
+  /* 1. Mobile Navigation Toggle */
+  const navToggle = document.querySelector(".nav-toggle")
+  const navMenu = document.querySelector(".nav-menu")
+  navToggle.addEventListener("click", () => {
+    navMenu.classList.toggle("active")
     const spans = navToggle.querySelectorAll("span")
-    spans[0].style.transform = "none"
-    spans[1].style.opacity = "1"
-    spans[2].style.transform = "none"
-  })
-})
-
-// Smooth Scrolling
-document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-  anchor.addEventListener("click", function (e) {
-    e.preventDefault()
-    const target = document.querySelector(this.getAttribute("href"))
-    if (target) {
-      const headerOffset = 60
-      const elementPosition = target.getBoundingClientRect().top
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      })
+    if (navMenu.classList.contains("active")) {
+      spans[0].style.transform = "rotate(45deg) translateY(8px)"
+      spans[1].style.opacity = "0"
+      spans[2].style.transform = "rotate(-45deg) translateY(-8px)"
+    } else {
+      spans[0].style.transform = "none"
+      spans[1].style.opacity = "1"
+      spans[2].style.transform = "none"
     }
   })
-})
-
-// Carousel Functionality
-const carouselTrack = document.querySelector(".carousel-track")
-const slides = document.querySelectorAll(".carousel-slide")
-const prevBtn = document.querySelector(".carousel-prev")
-const nextBtn = document.querySelector(".carousel-next")
-const dotsContainer = document.querySelector(".carousel-dots")
-
-let currentSlide = 0
-const totalSlides = slides.length
-
-// Create dots
-for (let i = 0; i < totalSlides; i++) {
-  const dot = document.createElement("div")
-  dot.classList.add("carousel-dot")
-  if (i === 0) dot.classList.add("active")
-  dot.addEventListener("click", () => goToSlide(i))
-  dotsContainer.appendChild(dot)
-}
-
-const dots = document.querySelectorAll(".carousel-dot")
-
-function updateCarousel() {
-  slides.forEach((slide, index) => {
-    slide.classList.remove("active")
-    if (index === currentSlide) {
-      slide.classList.add("active")
-    }
+  document.querySelectorAll(".nav-menu a").forEach((link) => {
+    link.addEventListener("click", () => {
+      navMenu.classList.remove("active")
+      const spans = navToggle.querySelectorAll("span")
+      spans[0].style.transform = "none"
+      spans[1].style.opacity = "1"
+      spans[2].style.transform = "none"
+    })
   })
 
-  dots.forEach((dot, index) => {
-    dot.classList.remove("active")
-    if (index === currentSlide) {
-      dot.classList.add("active")
-    }
+  /* 2. Smooth Scrolling (offset por header sticky) */
+  const HEADER_OFFSET = 70
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
+      const target = document.querySelector(this.getAttribute("href"))
+      if (!target) return
+      e.preventDefault()
+      const elementPosition = target.getBoundingClientRect().top + window.pageYOffset - HEADER_OFFSET
+      window.scrollTo({ top: elementPosition, behavior: "smooth" })
+    })
   })
-}
 
-function goToSlide(index) {
-  currentSlide = index
-  updateCarousel()
-}
-
-function nextSlide() {
-  currentSlide = (currentSlide + 1) % totalSlides
-  updateCarousel()
-}
-
-function prevSlide() {
-  currentSlide = (currentSlide - 1 + totalSlides) % totalSlides
-  updateCarousel()
-}
-
-nextBtn.addEventListener("click", nextSlide)
-prevBtn.addEventListener("click", prevSlide)
-
-// Auto-advance carousel
-let carouselInterval = setInterval(nextSlide, 5000)
-
-// Pause auto-advance on hover
-carouselTrack.addEventListener("mouseenter", () => {
-  clearInterval(carouselInterval)
-})
-
-carouselTrack.addEventListener("mouseleave", () => {
-  carouselInterval = setInterval(nextSlide, 5000)
-})
-
-// Countdown Timer
-function updateCountdown() {
-  const countdownElement = document.getElementById("countdown-timer")
-
-  // Get current time
-  const now = new Date()
-
-  // Set target time to end of day
-  const endOfDay = new Date()
-  endOfDay.setHours(23, 59, 59, 999)
-
-  // Calculate difference
-  const diff = endOfDay - now
-
-  // Calculate hours, minutes, seconds
-  const hours = Math.floor(diff / (1000 * 60 * 60))
-  const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))
-  const seconds = Math.floor((diff % (1000 * 60)) / 1000)
-
-  // Format with leading zeros
-  const formattedTime = `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`
-
-  countdownElement.textContent = formattedTime
-}
-
-// Update countdown every second
-updateCountdown()
-setInterval(updateCountdown, 1000)
-
-// Form Submission
-const contactForm = document.querySelector(".contact-form")
-
-contactForm.addEventListener("submit", (e) => {
-  e.preventDefault()
-
-  // Get form data
-  const formData = new FormData(contactForm)
-  const data = Object.fromEntries(formData)
-
-  // Here you would typically send the data to a server
-  console.log("Form submitted:", data)
-
-  // Show success message
-  alert("¡Gracias por tu mensaje! Nos pondremos en contacto contigo pronto.")
-
-  // Reset form
-  contactForm.reset()
-})
-
-// Scroll animations
-const observerOptions = {
-  threshold: 0.1,
-  rootMargin: "0px 0px -50px 0px",
-}
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.style.opacity = "1"
-      entry.target.style.transform = "translateY(0)"
-    }
-  })
-}, observerOptions)
-
-// Observe elements for animation
-document.querySelectorAll(".pricing-card, .gallery-item, .event-card").forEach((el) => {
-  el.style.opacity = "0"
-  el.style.transform = "translateY(20px)"
-  el.style.transition = "opacity 0.6s ease, transform 0.6s ease"
-  observer.observe(el)
-})
-
-// Header scroll effect
-let lastScroll = 0
-const header = document.querySelector(".header")
-
-window.addEventListener("scroll", () => {
-  const currentScroll = window.pageYOffset
-
-  if (currentScroll > lastScroll && currentScroll > 100) {
-    header.style.transform = "translateY(-100%)"
-  } else {
-    header.style.transform = "translateY(0)"
+  /* 3. AOS animations (respeta prefers-reduced-motion) */
+  if (window.AOS && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    AOS.init({ duration: 700, easing: "ease-out-cubic", once: true, offset: 40 })
   }
 
-  lastScroll = currentScroll
+  /* 4. Carousel de eventos — Swiper (táctil, autoplay) */
+  if (window.Swiper) {
+    new Swiper("#eventos-carousel", {
+      slidesPerView: 1,
+      spaceBetween: 20,
+      loop: true,
+      autoplay: { delay: 4500, disableOnInteraction: false },
+      speed: 600,
+      grabCursor: true,
+      pagination: { el: ".swiper-pagination", clickable: true },
+      navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+      breakpoints: {
+        560: { slidesPerView: 2, spaceBetween: 20 },
+        900: { slidesPerView: 3, spaceBetween: 24 }
+      }
+    })
+  }
+
+  /* 5. Countdown a fin de día (oferta) */
+  const countdownElement = document.getElementById("countdown-timer")
+  function pad(n) { return String(n).padStart(2, "0") }
+  function updateCountdown() {
+    if (!countdownElement) return
+    const endOfDay = new Date()
+    endOfDay.setHours(23, 59, 59, 999)
+    const diff = endOfDay - new Date()
+    const hours = Math.floor(diff / 3600000)
+    const minutes = Math.floor((diff % 3600000) / 60000)
+    const seconds = Math.floor((diff % 60000) / 1000)
+    countdownElement.textContent = `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`
+  }
+  updateCountdown()
+  setInterval(updateCountdown, 1000)
+
+  /* 6. Header sticky con blur */
+  const header = document.querySelector(".header")
+  const backToTop = document.getElementById("back-to-top")
+  function onScroll() {
+    const scrolled = window.pageYOffset > 10
+    header.classList.toggle("scrolled", scrolled)
+    const showTop = window.pageYOffset > 400
+    backToTop.classList.toggle("visible", showTop)
+    backToTop.setAttribute("aria-hidden", showTop ? "false" : "true")
+  }
+  window.addEventListener("scroll", onScroll, { passive: true })
+  onScroll()
+  if (backToTop) backToTop.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" })
+  })
+
+  /* 7. Galería — GLightbox preview */
+  if (window.GLightbox) {
+    GLightbox({ selector: ".glightbox-img", touchNavigation: true, loop: true, zoomable: true })
+  }
+
+  /* 8. Formulario — toast en vez de alert */
+  const contactForm = document.querySelector(".contact-form")
+  function showToast(msg) {
+    let toast = document.querySelector(".toast")
+    if (!toast) {
+      toast = document.createElement("div")
+      toast.className = "toast"
+      document.body.appendChild(toast)
+    }
+    toast.textContent = msg
+    toast.classList.add("show")
+    setTimeout(() => toast.classList.remove("show"), 3200)
+  }
+  if (contactForm) {
+    contactForm.addEventListener("submit", (e) => {
+      e.preventDefault()
+      const data = Object.fromEntries(new FormData(contactForm))
+      console.log("Form submitted:", data)
+      showToast("¡Gracias! Nos pondremos en contacto contigo pronto.")
+      contactForm.reset()
+    })
+  }
 })
