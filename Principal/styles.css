@@ -200,7 +200,7 @@ body{
 }
 .countdown-icon{ display:none; }
 #countdown-timer{ font-variant-numeric:tabular-nums; letter-spacing:0.06em; color:var(--color-gold); font-weight:600; }
-.pricing-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:20px; max-width:960px; margin:0 auto; align-items:stretch; }
+.pricing-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; max-width:1160px; margin:0 auto; align-items:stretch; }
 .pricing-card{
   background:var(--color-surface-2); border:1px solid var(--color-border);
   border-radius:var(--radius-lg); padding:26px 22px; display:flex; flex-direction:column;
